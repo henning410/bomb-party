@@ -1,0 +1,28 @@
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.reduced-size {
+    max-width: 100%; /* Adjust this value as needed */
+    height: auto;
+}
+
+#center-image {
+    max-width: 20%;
+    height: auto;
+}
+
+#image-text {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#action-button {
+    margin-top: auto; /* To push the button to the bottom */
+    margin-bottom: 20px;
+}
+
+.input-group-append .btn {
+    margin-left: 5px;
+}
