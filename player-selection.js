@@ -49,7 +49,7 @@ function savePlayers() {
     if (isEmpty) {
         console.log("EMPTY")
         var alert = `
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="tempAlert">
                         <strong>Fehler!</strong> Jeder Spieler muss einen Namen haben.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -57,6 +57,9 @@ function savePlayers() {
                     </div>
                 `;
         $('#alert-container').append(alert);
+        setTimeout(function() {
+            $('#tempAlert').alert('close');
+        }, 5000);
     } else {
         const categories = [
             "Werkzeuge",
