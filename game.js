@@ -159,7 +159,7 @@ $(document).ready(function () {
         console.log(`Player ${playerName} was clicked.`);
     });
 
-    
+
     function showResults() {
         console.log("ERGEBNIS: ", JSON.parse(localStorage.getItem('clickCounts')))
 
@@ -196,5 +196,6 @@ $(document).ready(function () {
             `;
             $('#game-text').append(listItem);
         });
+        $('#restartButton').show();
     }
 });
