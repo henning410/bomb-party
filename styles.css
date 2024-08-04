@@ -1,21 +1,24 @@
 body.dark-mode {
     background-color: #121212;
     color: #ffffff;
+    margin: 0;
+    padding: 0;
 }
 
 .reduced-size {
-    max-width: 100%; /* Adjust this value as needed */
+    max-width: 50%; /* Adjust this value as needed */
     height: auto;
 }
 
 #center-image {
-    max-width: 20%;
+    max-width: 40%;
     height: auto;
 }
 
 #image-text {
     margin-top: 20px;
     text-align: center;
+    font-size: 1.2rem;
 }
 
 #action-button {
@@ -25,4 +28,63 @@ body.dark-mode {
 
 .input-group-append .btn {
     margin-left: 5px;
+}
+
+.sticky-bottom-button {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* Input rounds */
+.btn-group .btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.input-group {
+    width: auto;
+}
+.mt-2 {
+    margin-top: 2rem;
+}
+
+/* Checkboxes */
+.form-check-label {
+    font-size: 1.25rem; /* Increase the font size of the labels */
+}
+.form-check-input {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* List of players to select looser */
+.list-group-item{
+    color: black;
+    font-size: 1.25rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.list-group-item:active {
+    background-color: #d6d6d6; /* Light grey background on click */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Inner shadow effect */
+}
+
+
+
+.gold {
+    color: gold;
+}
+.silver {
+    color: silver;
+}
+.bronze {
+    color: bronze;
 }
