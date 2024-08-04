@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Image with Text</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script src="settings.js"></script>
+</head>
+
+<body class="dark-mode">
+    <!-- Back button at the upper right corner -->
+    <button type="button" class="btn btn-secondary back-button" onclick="history.back()">
+        <i class="fas fa-arrow-left"></i> Back
+    </button>
+
+    <div class="container d-flex flex-column justify-content-center align-items-center mt-4">
+        <h1 id="">Einstellungen</h1>
+
+    </div>
+
+
+    <div class="container d-flex flex-column justify-content-center align-items-center mt-2">
+        <div class="input-group">
+            <span class="input-group-text">Anzahl der Runden</span>
+            <div class="input-group-append">
+                <button class="btn btn-secondary" type="button" onclick="decrementNumber()"><i
+                        class="fas fa-arrow-down"></i></button>
+            </div>
+            <input type="number" class="form-control text-center" id="roundNumber" value="8" min="4" max="20">
+            <div class="input-group-prepend">
+                <button class="btn btn-secondary" type="button" onclick="incrementNumber()"><i
+                        class="fas fa-arrow-up"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkboxes for options -->
+    <div class="container d-flex flex-column justify-content-center align-items-center mt-2">
+        <div class="row checkbox-group">
+            <div class="col-auto">
+                <label for="checkbox1" class="form-check-label">Alle Kateogorien</label>
+            </div>
+            <div class="col-auto">
+                <input type="checkbox" class="form-check-input" id="checkbox1" checked>
+            </div>
+        </div>
+        <div class="row checkbox-group mt-4">
+            <div class="col-auto">
+                <label for="checkbox2" class="form-check-label">Bald verfügbar</label>
+            </div>
+            <div class="col-auto">
+                <input type="checkbox" class="form-check-input" id="checkbox2">
+            </div>
+        </div>
+        <div class="row checkbox-group">
+            <div class="col-auto">
+                <label for="checkbox3" class="form-check-label">Bald verfügbar</label>
+            </div>
+            <div class="col-auto">
+                <input type="checkbox" class="form-check-input" id="checkbox3">
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky button at the bottom of the screen -->
+    <button type="button" class="btn btn-primary sticky-bottom-button" onclick=startGame()>Spiel
+        Starten</button>
+</body>
+
+</html>
