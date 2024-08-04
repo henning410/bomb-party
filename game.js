@@ -113,6 +113,7 @@ $(document).ready(function () {
 
     startButton.addEventListener('click', () => {
         wordCount = {};  // Reset the word count when starting a new session
+        console.log('Reset Wordcount: ', wordCount);
         recognition.start();
         currentRound += 1;
         // Select category
