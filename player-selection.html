@@ -14,29 +14,35 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <!-- Custom JS -->
-    <script src="script.js"></script>
-</head>
-<body class="dark-mode">
-    <div class="container d-flex flex-column justify-content-center align-items-center mt-4">
-        <h1 id="">Spieler auswählen</h1>
-
-        <div id="input-container" class="w-50 mt-4">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter name">
-                
-            </div>
-        </div>
-
-        <button type="button" class="btn btn-success mt-4" id="action-button" onclick="appendPlayer()">Spieler hinzufügen +</button>
-        <button type="button" class="btn btn-success mt-4" id="action-button" onclick="location.href='./player-selection.html'">Spiel Starten</button>
-    </div>
-
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Custom JS -->
-    <script src="script.js"></script>
+    <script src="player-selection.js"></script>
+</head>
+<body class="dark-mode">
+    <div class="container d-flex flex-column justify-content-center align-items-center mt-4">
+        <h1 id="">Spieler auswählen</h1>
+
+        <div id="input-container" class="w-100 w-sm-75 w-md-60 w-lg-50 mt-4">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Spielername eingeben" id="firstField">
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-success mt-4" id="action-button" onclick="appendPlayer()">Spieler hinzufügen +</button>
+      </div>
+
+        
+    </div>
+    <div class="container d-flex flex-column justify-content-center align-items-center mt-4">
+        <div id="alert-container" class="mt-3 w-100"></div>
+    </div>
+    
+      
+
+    <!-- Sticky button at the bottom of the screen -->
+    <button type="button" class="btn btn-primary sticky-bottom-button" onclick="savePlayers()">Weiter <i class="fas fa-arrow-right"></i></button>    
 </body>
 </html>
