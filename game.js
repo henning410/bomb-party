@@ -4,6 +4,7 @@ const storedPlayers = JSON.parse(localStorage.getItem("playerNames"));
 const numberOfRounds = localStorage.getItem("numberOfRounds");
 let currentRound = 0;
 let currentPlayer = 0;
+let recognition;
 
 $(document).ready(function () {
     if (categories.length == 0) {
@@ -23,6 +24,52 @@ $(document).ready(function () {
     // Select random player
     currentPlayer = Math.floor(Math.random() * storedPlayers.length)
     showPlayer();
+
+
+    // Check if the browser supports the Web Speech API
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+        alert('Your browser does not support Speech Recognition API');
+    } else {
+        recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = false;
+        recognition.lang = 'de-DE';
+
+        let wordCount = {};
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+            const words = transcript.split(' ');
+
+            words.forEach(word => {
+                console.log(`Recognized word: ${word}`);
+                if (wordCount[word]) {
+                    wordCount[word]++;
+                } else {
+                    wordCount[word] = 1;
+                }
+
+                if (wordCount[word] === 2) {
+                    playSound();
+                }
+            });
+            console.log(wordCount);  // For debugging purposes
+        };
+
+        recognition.onerror = (event) => {
+            console.error('Speech recognition error', event.error);
+        };
+
+        recognition.onend = () => {
+            console.log('Speech recognition service disconnected');
+        };
+
+        function playSound() {
+            console.log('ERKANNT DU WICHT')
+        }
+    }
+
 
     function showPlayer() {
         startPlayer = storedPlayers[currentPlayer];
@@ -46,6 +93,7 @@ $(document).ready(function () {
             console.error('Playback failed:', error);
         });
         selectLooser();
+        recognition.stop();
     }
 
 
@@ -64,6 +112,8 @@ $(document).ready(function () {
 
 
     startButton.addEventListener('click', () => {
+        wordCount = {};  // Reset the word count when starting a new session
+        recognition.start();
         currentRound += 1;
         // Select category
         // Select a random index
