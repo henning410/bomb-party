@@ -5,7 +5,7 @@ const numberOfRounds = localStorage.getItem("numberOfRounds");
 let currentRound = 0;
 let currentPlayer = 0;
 let recognition;
-let wordCount = {}; 
+let wordCount = {};
 
 $(document).ready(function () {
     if (categories.length == 0) {
@@ -50,7 +50,19 @@ $(document).ready(function () {
                 }
 
                 if (wordCount[word] === 2) {
-                    playSound();
+                    console.log("Zweimal das Gleiche");
+                    var alert = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="tempAlert">
+                        <strong>Fehler!</strong> Jeder Spieler muss einen Namen haben.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                `;
+                    $('#game-text').append(alert);
+                    setTimeout(function () {
+                        $('#tempAlert').alert('close');
+                    }, 5000);
                 }
             });
             console.log(wordCount);  // For debugging purposes
@@ -63,10 +75,6 @@ $(document).ready(function () {
         recognition.onend = () => {
             console.log('Speech recognition service disconnected');
         };
-
-        function playSound() {
-            console.log('ERKANNT DU WICHT')
-        }
     }
 
 
@@ -222,7 +230,7 @@ $(document).ready(function () {
 
         $('#game-text').text("Ergebnisse:");
         $('#game-text').show();
-        
+
         // Iterate over the sorted array to create list items with icons
         sortedPlayers.forEach(([playerName, clickCount], index) => {
             // Determine icon class based on ranking
