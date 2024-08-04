@@ -5,6 +5,7 @@ const numberOfRounds = localStorage.getItem("numberOfRounds");
 let currentRound = 0;
 let currentPlayer = 0;
 let recognition;
+let wordCount = {}; 
 
 $(document).ready(function () {
     if (categories.length == 0) {
@@ -35,8 +36,6 @@ $(document).ready(function () {
         recognition.continuous = true;
         recognition.interimResults = false;
         recognition.lang = 'de-DE';
-
-        let wordCount = {};
 
         recognition.onresult = (event) => {
             const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
@@ -112,7 +111,10 @@ $(document).ready(function () {
 
 
     startButton.addEventListener('click', () => {
-        wordCount = {};  // Reset the word count when starting a new session
+        if (recognition) {
+            recognition.stop();  // Stop any ongoing recognition
+        }
+        wordCount = {};
         console.log('Reset Wordcount: ', wordCount);
         recognition.start();
         currentRound += 1;
