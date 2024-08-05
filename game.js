@@ -8,6 +8,8 @@ let recognition;
 let wordCount = {};
 
 $(document).ready(function () {
+    
+
     if (categories.length == 0) {
         $("#player-text").text("Hinweis: Du hast alle Kategorien durch");
     }
@@ -28,54 +30,58 @@ $(document).ready(function () {
 
 
     // Check if the browser supports the Web Speech API
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-        alert('Your browser does not support Speech Recognition API');
-    } else {
-        recognition = new SpeechRecognition();
-        recognition.continuous = true;
-        recognition.interimResults = false;
-        recognition.lang = 'de-DE';
+    if (localStorage.getItem('voiceRecognition') === "true") {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRecognition) {
+            alert('Your browser does not support Speech Recognition API');
+        } else {
+            console.log("Voice Recognition is supported")
+            recognition = new SpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = false;
+            recognition.lang = 'de-DE';
 
-        recognition.onresult = (event) => {
-            const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
-            const words = transcript.split(' ');
+            recognition.onresult = (event) => {
+                const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+                const words = transcript.split(' ');
 
-            words.forEach(word => {
-                console.log(`Recognized word: ${word}`);
-                if (wordCount[word]) {
-                    wordCount[word]++;
-                } else {
-                    wordCount[word] = 1;
-                }
+                words.forEach(word => {
+                    console.log(`Recognized word: ${word}`);
+                    if (wordCount[word]) {
+                        wordCount[word]++;
+                    } else {
+                        wordCount[word] = 1;
+                    }
 
-                if (wordCount[word] === 2) {
-                    console.log("Zweimal das Gleiche");
-                    var alert = `
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="tempAlert">
-                        <strong>Fehler!</strong> Jeder Spieler muss einen Namen haben.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                `;
-                    $('#game-text').append(alert);
-                    setTimeout(function () {
-                        $('#tempAlert').alert('close');
-                    }, 5000);
-                }
-            });
-            console.log(wordCount);  // For debugging purposes
-        };
+                    if (wordCount[word] === 2) {
+                        console.log("Zweimal das Gleiche");
+                        var alert = `
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="tempAlert">
+                            <strong>Fehler!</strong> Jeder Spieler muss einen Namen haben.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    `;
+                        $('#game-text').append(alert);
+                        setTimeout(function () {
+                            $('#tempAlert').alert('close');
+                        }, 5000);
+                    }
+                });
+                console.log(wordCount);  // For debugging purposes
+            };
 
-        recognition.onerror = (event) => {
-            console.error('Speech recognition error', event.error);
-        };
+            recognition.onerror = (event) => {
+                console.error('Speech recognition error', event.error);
+            };
 
-        recognition.onend = () => {
-            console.log('Speech recognition service disconnected');
-        };
+            recognition.onend = () => {
+                console.log('Speech recognition service disconnected');
+            };
+        }
     }
+
 
 
     function showPlayer() {
@@ -228,7 +234,7 @@ $(document).ready(function () {
         // Convert object to array and sort by click count (ascending order)
         const sortedPlayers = Object.entries(clickCounts).sort((a, b) => a[1] - b[1]);
 
-        $('#game-text').text("Ergebnisse:");
+        $('#game-text').text("Ergebnisse");
         $('#game-text').show();
 
         // Iterate over the sorted array to create list items with icons
