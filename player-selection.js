@@ -65,7 +65,26 @@ function savePlayers() {
             "Werkzeuge",
             "Olympische Sportart",
             "Wörter die mit 'sch' anfangen",
-            "Findet man im Kühlschrank"
+            "Findet man im Kühlschrank",
+            "Schulfächer",
+            "Haustiere",
+            "Sportmarken",
+            "Sportausrüstung",
+            "Sehenswürdigkeiten",
+            "Filmtitel",
+            "Fortbewegungsmittel",
+            "Schauspieler",
+            "Wörter die mit 'e' enden",
+            "Getränke",
+            "Tiere im Meer",
+            "Brettspiele",
+            "Computer- oder Handyspiele",
+            "Technische Geräte",
+            "Alkoholisches Getränk",
+            "Möbel",
+            "Küchengeräte",
+            "Verben, die mit 'p' anfangen",
+            "Flüsse"
         ];
         localStorage.setItem('categories', JSON.stringify(categories));
         localStorage.setItem('playerNames', JSON.stringify(playerNames));
