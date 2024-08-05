@@ -1,0 +1,38 @@
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.sticky-bottom-button {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.gold {
+    color: gold;
+}
+.silver {
+    color: silver;
+}
+.bronze {
+    color: #bf8970;
+}
+
+/* List of players to select looser */
+.list-group-item{
+    color: black;
+    font-size: 1.25rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.list-group-item:active {
+    background-color: #d6d6d6; /* Light grey background on click */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Inner shadow effect */
+}
