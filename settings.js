@@ -23,6 +23,11 @@ function decrementNumber() {
 }
 
 function startGame() {
+    if ($('#voiceRecognitionCheckbox').is(":checked")){
+        localStorage.setItem('voiceRecognition', true);
+    } else {
+        localStorage.setItem('voiceRecognition', false);
+    }
     localStorage.setItem('numberOfRounds', $('#roundNumber').val());
     window.location = './game.html'
 }
